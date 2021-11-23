@@ -2,9 +2,13 @@
 // importacao das libs externas (express e cors)
 const express = require('express');
 const cors = require('cors');
+
 // importei da pasta Conn onde está o mongo
 const Conn = require('./conn/conn');
-// importar as rotas que eu vou ultilizar na pasta routes, arquivo: tarefas.routes,js
+
+// importar as rotas que eu vou ultilizar na pasta routes, arquivo: tarefas.routes,js4
+
+
 const tarefasRouter = require('./routes/tarefas.routes');
 
 

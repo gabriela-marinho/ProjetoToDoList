@@ -24,5 +24,6 @@ const tarefaModel = new mongoose.Schema({
 //  aceita 2 parametros a colection q eu criam no BD e a constante que foi criada acima, como modelo
 const Tarefa = mongoose.model('tarefasbd', tarefaModel);
 
+// estou exportando a const Tarefa = mongoose.model('tarefasbd', tarefaModel);
 
 module.exports = Tarefa;

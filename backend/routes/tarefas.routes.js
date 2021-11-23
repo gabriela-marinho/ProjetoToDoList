@@ -1,7 +1,14 @@
-const { Router } = require('express');
+// const { Router } = require('express');
 const express = require('express');
+
+// importo o modulo controller q eu ja ahvia exportado no tarefas.controller.js, para acessar as funçoes
+const TarefasController = require('./../controllers/tarefas.controller');
+
 // inicializar as rotas do express
 const router = express.Router();
+
+// inicializo a classe controller
+const tarefasController = new TarefasController;
 
 const tarefas = [
     {
@@ -17,36 +24,39 @@ const tarefas = [
 ]
 
 // função GET , RETORNANDO A LEITURA DE TODAS AS TAREFAS
-router.get('/',(req,res) => {
-    res.send(tarefas);
-// *****************************************PRECISO COLOCAR O STATUS 200 QND A LISTA ´E EXIBIDA? SE SIM COMO FAÇO?*******************************************************
-    if(tarefas == tarefas){
-        res.status(200).send({
-            message: 'Lista de tarefas cadastradas exibida com sucesso!'
-        })
-        return;
-    }
+router.get('/',tarefasController.getTarefas) 
+// => {
+//     res.send(tarefas);
+// // *****************************************PRECISO COLOCAR O STATUS 200 QND A LISTA ´E EXIBIDA? SE SIM COMO FAÇO?*******************************************************
+//     if(tarefas == tarefas){
+//         res.status(200).send({
+//             message: 'Lista de tarefas cadastradas exibida com sucesso!'
+//         })
+//         return;
+//     }
     
-})
+// })
 
 //função GET usando o ID, req.params é um objeto que contém propriedades para a rota nomeada que será o ID
-router.get('/:id',(req,res) =>{
-    //    acesso o id recebido via parametro. aqui estou comparando a constante que pego da requisição via params e comparando com a constante  tarefa . ID(PARAMETRO ID)
-    const idParam = req.params.id;
-    // == que compara apenas o valor
-    const tarefa = tarefas.find(tarefa => tarefa.id == idParam);
+//[GET /vagas/:id - retorna um item por id
+router.get('/:id', tarefasController.getTarefasById);
+// router.get('/:id',(req,res) =>{
+//     //    acesso o id recebido via parametro. aqui estou comparando a constante que pego da requisição via params e comparando com a constante  tarefa . ID(PARAMETRO ID)
+//     const idParam = req.params.id;
+//     // == que compara apenas o valor
+//     const tarefa = tarefas.find(tarefa => tarefa.id == idParam);
 
-    // verifica se a tarefa digitada por id foi encontrada e retorna um status de erro
-    if(!tarefa) {
+//     // verifica se a tarefa digitada por id foi encontrada e retorna um status de erro
+//     if(!tarefa) {
         
-        res.status(404).send({error: `${idParam} ,não corresponde a nenhuma tarefa cadastrada`});
-        return;
-    }
-    // aqui envio uma resposta com a constante achada  apos compararação.
-    res.send(tarefa);
+//         res.status(404).send({error: `${idParam} ,não corresponde a nenhuma tarefa cadastrada`});
+//         return;
+//     }
+//     // aqui envio uma resposta com a constante achada  apos compararação.
+//     res.send(tarefa);
     
     
-})
+// })
 
 // função POST para criar uma tarefa
 router.post('/add', (req,res) =>{
