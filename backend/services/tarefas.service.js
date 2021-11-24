@@ -8,10 +8,17 @@ class tarefasService {
     // vai buscar um unico item no banco de acordo com o seu id
     findById = async (id) => await Tarefa.findById(id);
 
-    // findByIdAndUpdate = async ()=> await Tarefa.findByIdAndUpdate(id);
+    // cria um objeto
+    create = async (tarefa) => await Tarefa.create(tarefa);  
+    
+    // edita um objeto pelo id
+    edit = async (id, tarefa) => await Tarefa.updateOne({ _id: id}, tarefa);
 
-    // findByIdAndDelete = async () => await Tarefa.findByIdAndRemove(id);
-  
+    // exclui um objeto pelo id
+    delete = async (id) => await Tarefa.deleteOne({ _id: id});
+
   }
+    
+
   
-  module.exports = tarefasService;
+  module.exports = tarefasService; 
