@@ -18,7 +18,7 @@ class tarefasController{
                     })
                     
                 } 
-            // res.send(tarefas);      
+             res.send(tarefas);      
             
 
     }
@@ -47,9 +47,12 @@ class tarefasController{
         // acesso o corpo da requisicao para pegar o objeto.
         // objeto para ser cadastrado no banco.
             const tarefa = req.body;
-            if(!req.body){
-             return;
-            }
+            // if(!req.body){
+            //  return;
+            // }
+            // com a tarefa ja no body eu mando ela para o banco,atraves da função tarefasService ,chamada create
+            // para saber se a tarefa foi cadastrada uso o .then que retorna uma resposta positiva para o front
+            // caso contrario o .cath que retorna um erro.
             await tarefasService.create(tarefa)
             .then(() => {
             res.send({message: `Tarefa ${tarefa.titulo} Cadastrada com sucesso`})

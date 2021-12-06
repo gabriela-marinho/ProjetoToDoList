@@ -9,6 +9,8 @@ class tarefasService {
     findById = async (id) => await Tarefa.findById(id);
 
     // cria um objeto
+    // aqui eu chamo a função Tarefa do model, que é quem acessa as funçoes do banco de dados,depois eu retorno o resultado 
+    // da função para o controller
     create = async (tarefa) => await Tarefa.create(tarefa);  
     
     // edita um objeto pelo id

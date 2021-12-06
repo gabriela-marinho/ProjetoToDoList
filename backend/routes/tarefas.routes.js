@@ -35,7 +35,7 @@ router.get('/',tarefasController.getTarefas)
 router.get('/:id', tarefasController.getTarefasById);
 
 
-// função POST para criar uma tarefa
+// função POST para criar uma tarefa, dispara a função do controller chamada createTarefa
 router.post('/add', tarefasController.createTarefa)
 
 // // ***********************************************ver A FUNÇÃO PUT NOVAMENTE*************************************************
